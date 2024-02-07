@@ -7,6 +7,7 @@ ResumeUp is trying to solve the issue of creating high quality resumes that can 
 ### App Routing
 NextJS routing is done with folders
 [NextJS Docs](https://nextjs.org/docs/getting-started/project-structure) *WE ARE USING APP ROUTER*
+```
   .
   ├── src
   │   ├── app
@@ -30,3 +31,4 @@ NextJS routing is done with folders
   │   │   │   ├── page.tsx Resume.com/Terms_Of_Service
   │   ├── components
   │   │   ├── React Components 
+```

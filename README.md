@@ -4,7 +4,7 @@ ResumeUp is trying to solve the issue of creating high quality resumes that can 
 ## Project Board
 [Kanban Board] (https://github.com/users/ElminD/projects/1/views/1)
 
-##% App Routing
+### App Routing
 NextJS routing is done with folders
 [NextJS Docs](https://nextjs.org/docs/getting-started/project-structure) *WE ARE USING APP ROUTER*
   .

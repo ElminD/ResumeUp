@@ -10,7 +10,12 @@
     "format": "prettier --write . && next lint"
   },
   "dependencies": {
+    "@mantine/colors-generator": "^7.6.1",
+    "@mantine/core": "^7.6.1",
+    "@mantinex/mantine-logo": "^1.0.1",
+    "@tabler/icons-react": "^2.47.0",
     "aws-amplify": "^6.0.15",
+    "chroma-js": "^2.4.2",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18"
@@ -28,7 +33,9 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "eslint-config-prettier": "^9.1.0",
-    "postcss": "^8",
+    "postcss": "^8.4.35",
+    "postcss-preset-mantine": "^1.13.0",
+    "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.3.0",
     "typescript": "^5.3.3"

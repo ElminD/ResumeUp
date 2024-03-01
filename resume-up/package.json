@@ -13,12 +13,20 @@
     "@mantine/colors-generator": "^7.6.1",
     "@mantine/core": "^7.6.1",
     "@mantinex/mantine-logo": "^1.0.1",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
     "@tabler/icons-react": "^2.47.0",
     "aws-amplify": "^6.0.15",
     "chroma-js": "^2.4.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.344.0",
     "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@aws-amplify/backend": "^0.12.0",

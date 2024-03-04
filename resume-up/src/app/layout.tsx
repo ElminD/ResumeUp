@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
-import { Footer } from "../components/Footer";
-import { theme } from '../theme';
+import { cn } from "@/lib/utils";
+import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 
-
-const inter = Inter({ subsets: ["latin"] });
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,15 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-      <ColorSchemeScript />
-      </head>
+      <head></head>
 
-      <body className={inter.className}>
-        <MantineProvider theme={theme}>
-          {children}
-        <Footer/>
-        </MantineProvider>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

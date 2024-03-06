@@ -1,5 +1,8 @@
+import AboutUs from "@/components/shared/AboutUs";
+import "./AboutUs.module.css"
+
 const page = () => {
-  return <div>page</div>;
+  return <AboutUs/>;
 };
 
 export default page;

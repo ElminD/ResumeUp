@@ -3,12 +3,6 @@
 import { Button } from "@/components/ui/button"
 
 export default function ContactForm() {
-    const makeApiCall = async () => {
-        console.log("hello")
-        await fetch("/api/hello", {
-          method: "GET"
-        })
-      }
     async function handleSubmit(event: any) {
         event.preventDefault();
         const data = {
@@ -25,18 +19,10 @@ export default function ContactForm() {
             },
             body: JSON.stringify(data)
         })
-
-        // if(response.ok) {
-        //     console.log("Sent")
-        // }
-        // if(!response.ok) {
-        //     console.log("Not sent")
-        // }
     }
 
     return (
         <form className="flex flex-col p-4" onSubmit={handleSubmit}>
-            <Button onClick={makeApiCall}>Upgrade</Button>
             <label className="mb-1">Name</label>
             <input 
                 type="text" 

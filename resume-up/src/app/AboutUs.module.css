@@ -1,0 +1,62 @@
+.aboutUsPage {
+    display: flex;
+    justify-content: space-between;
+}
+.ourStory {
+    flex: 1;
+    margin-right: 20px;
+}
+.teamPictures {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.teamPictures img {
+    max-width: 100%;
+    height: auto;
+}
+.teamPictures a {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+}
+/* Additional styling for overall look improvement */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.aboutUsPage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.teamPictures img {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-bottom: 5px; /* Add margin to create space between images */
+}
+
+.teamPictures a {
+    display: inline-block;
+    font-weight: bold;
+    padding-top: 50px;
+    padding-right: 5px;
+    margin-left: 2px; /* Add margin to create space between image and text */
+    margin-right: 5px;
+    vertical-align: middle; /* Align text vertically with the image */
+}

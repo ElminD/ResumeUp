@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
+import HomeStart from "@/components/shared/HomeStart";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
-      <h1>Invest In Your Future</h1>
+      {/* <h1>Invest In Your Future</h1>
       <p>
         Upgrade to our Pro Plan on ResumeUp, and unlock a wealth of resources
         that elevate your resume creation experience. With an expanded array of
@@ -16,7 +17,8 @@ export default function Home() {
         with the Pro Plan on ResumeUp, where innovation and customization
         converge to propel your professional journey to new heights.
       </p>
-      <Button>Upgrade</Button>
+      <Button>Upgrade</Button> */}
+      <HomeStart/>
     </main>
   );
 }

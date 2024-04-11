@@ -1,0 +1,35 @@
+.homePage {
+    display: flex;
+    align-items: center;
+    padding: 5%; /* Add padding to create space between the content and the border */
+}
+
+.homePage img {
+    max-width: 40%; /* Adjust image width as needed */
+}
+
+.startArea {
+    flex: 1;
+    padding: 0 20px; /* Add padding to create space between the image and content */
+    text-align: center;
+}
+
+.startArea h1 {
+    font-size: 76px; /* Adjust font size as needed */
+    color: #007bff; /* Change color to your desired color */
+}
+
+.startArea button {
+    border-radius: 35px; /* Adjust border-radius as needed */
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 25px 65px; /* Adjust padding as needed */
+    border: none; /* Remove border */
+    cursor: pointer;
+    font-size: 48px; /* Adjust font size as needed */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.startArea button:hover {
+    background-color: #45a049; /* Darker green color on hover */
+}

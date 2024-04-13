@@ -50,6 +50,26 @@
 }
 
 @layer utilities {
+  .form-boxes {
+    @apply border border-gray-300 bg-gray-200 rounded p-2
+  }
+
+  .form-header {
+    @apply text-lg font-semibold
+  }
+
+  .submit-button {
+    @apply bg-violet-500 font-semibold
+  }
+
+  .add-button {
+    @apply bg-green-500 w-fit text-lg h-[28px] w-[28px]
+  }
+
+  .delete-button {
+    @apply bg-red-500 w-2/12
+  }
+
   .wrapper {
     @apply max-w-7xl lg:mx-auto p-5 md:px-10 xl:px-0 w-full;
   }

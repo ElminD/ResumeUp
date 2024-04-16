@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie"
 
 export default function LoginForm() {
     const router = useRouter()
@@ -28,7 +29,8 @@ export default function LoginForm() {
             setLoggedIn({failed: true, display: responseData.message})
         }
         else {
-            router.push("/")
+            router.push("/Profile")
+            Cookies.set("loggedinEmail", data.email, {expires: Date.now() + (6 * 60 * 60 * 1000)})
         }
     }
 

@@ -208,8 +208,8 @@ export default function ContactForm() {
                 placeholder="Java, Python..." 
                 maxLength={500}
                 className="form-boxes"/>
-            <div className="flex justify-center mt-4">
-                <Button className="submit-button hover:bg-violet-600">Create Resume</Button>
+            <div className="flex justify-center mt-4 mb-8">
+                <Button className="submit-button hover:bg-[#5c51f5]">Create Resume</Button>
             </div>
         </form>
     )

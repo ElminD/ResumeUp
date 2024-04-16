@@ -13,7 +13,8 @@ export async function dbConnection() {
     return;
   }
 
-  const db = await connect("mongodb+srv://sdmay2405:resumeup@resumeupcluster.c6kxlom.mongodb.net/", {
+  // const connection 
+  const db = await connect(`${process.env.MONGO}`, {
     dbName: "ResumeUp"
   })
 

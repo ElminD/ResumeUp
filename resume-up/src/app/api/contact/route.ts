@@ -7,8 +7,8 @@ export async function POST(req: Request) {
         port: 587,
         secure: false,
         auth: {
-          user: "resumeupinc@gmail.com",
-          pass: "uwhu bjoo gywf zrpw",
+          user: `${process.env.NODE_MAILER_USER}`,
+          pass: `${process.env.NODE_MAILER_PASS}`,
         },
       });
 

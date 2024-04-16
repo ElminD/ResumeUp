@@ -53,7 +53,7 @@ export default function ContactForm() {
                 placeholder="How can we help you?" 
                 maxLength={500} 
                 className="border border-gray-300 bg-gray-200 rounded p-2 mb-2"/>
-            <div className="flex justify-center mt-4"><Button className="submit-button hover:bg-violet-600">Send</Button></div>
+            <div className="flex justify-center mt-4"><Button className="submit-button hover:bg-[#5c51f5]">Send</Button></div>
         </form>
     )
 }

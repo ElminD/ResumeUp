@@ -1,8 +1,8 @@
 import ContactForm from "./ContactForm";
 
 const page = () => {
-  return <div className="mx-auto max-w-2xl p-3">
-    <h1 className="flex justify-center text-2xl">Contact Us!</h1>
+  return <div className="flex flex-col justify-center px-96">
+    <h1 className="flex justify-center text-4xl font-bold text-resumeup">Contact Us!</h1>
     <ContactForm />
   </div>;
 };

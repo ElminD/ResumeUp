@@ -20,6 +20,7 @@ const config = {
     },
     extend: {
       colors: {
+        resumeup: "#766df6",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -1,6 +1,6 @@
 const page = () => {
-  return <div>
-    <h1 className="text-4xl font-bold mb-6 ml-3">Privacy Policy</h1>
+  return <div className="max-w-6xl mx-auto px-4 py-10">
+    <h1 className="text-4xl font-bold mb-6 ml-3 text-resumeup">Privacy Policy</h1>
     <p className="text-lg mb-6 ml-3">Last Updated: 2/19/24</p>
     <p className="text-lg ml-3">This page informs you of our policies regarding the collection, use, and disclosure of personal data when you
         use our Service and the choices you have associated with that data.</p>

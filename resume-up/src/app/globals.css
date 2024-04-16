@@ -59,7 +59,7 @@
   }
 
   .submit-button {
-    @apply bg-violet-500 font-semibold
+    @apply bg-resumeup font-semibold
   }
 
   .add-button {

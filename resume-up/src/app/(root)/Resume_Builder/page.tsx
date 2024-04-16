@@ -1,8 +1,8 @@
 import ResumeForm from "./ResumeForm"
 
 const page = () => {
-  return <div className="mx-auto max-w-2xl p-3">
-    <h1 className="flex justify-center text-2xl">Resume Builder</h1>
+  return <div className="flex flex-col justify-center px-96">
+    <h1 className="flex justify-center text-4xl font-bold mt-8 text-resumeup">Resume Builder</h1>
     <ResumeForm />
   </div>
 }

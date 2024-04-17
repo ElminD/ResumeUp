@@ -21,16 +21,17 @@ export async function Template1(data: any) {
     const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
     const timesRomanBold = await pdfDoc.embedFont(StandardFonts.TimesRomanBold)
     const timesRomanItalic = await pdfDoc.embedFont(StandardFonts.TimesRomanItalic)
+    pdfDoc.setTitle(data.name + " Resume")
     
     const page = pdfDoc.addPage()
     const { width, height } = page.getSize()
-    page.drawText(data.personalInfo.name, {
-        x: (width - timesRomanFont.widthOfTextAtSize(data.personalInfo.name, 28)) / 2,
+    page.drawText(data.name, {
+        x: (width - timesRomanFont.widthOfTextAtSize(data.name, 28)) / 2,
         y: height - 50,
         size: 28,
         font: timesRomanFont,
     })
-    const emailAndNum = data.personalInfo.email + " | " + data.personalInfo.phoneNum
+    const emailAndNum = data.email + " | " + data.phone
     page.drawText(emailAndNum, {
         x: (width - timesRomanFont.widthOfTextAtSize(emailAndNum, 12)) / 2,
         y: height - 70,
@@ -48,30 +49,40 @@ export async function Template1(data: any) {
         start: {x: 30, y: height - 95},
         end: {x: width - 30, y: height - 95}
     })
-    page.drawText(data.education.school, {
+    page.drawText(data.school, {
         x: 30,
         y: height - 112,
         size: 12,
         font: timesRomanBold
     })
     const months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    let startDate = data.education.startDate.split("-")
-    let endDate = data.education.endDate.split("-")
-    let duration = months[parseInt(startDate[1]) - 1] + " " + startDate[0] + " - " + months[parseInt(endDate[1]) - 1] + " " + endDate[0]
+    let startDate = data.started.split("-")
+    let endDate = data.ended.split("-")
+    let duration = ""
+    if(startDate.length > 1 && endDate.length > 1) {
+        duration = months[parseInt(startDate[1]) - 1] + " " + startDate[0] + " - " + months[parseInt(endDate[1]) - 1] + " " + endDate[0]
+    }
+    else if(startDate.length > 1) {
+        duration = months[parseInt(startDate[1]) - 1] + " " + startDate[0]
+    }
+    else if(endDate.length > 1) {
+        duration = months[parseInt(endDate[1]) - 1] + " " + endDate[0]
+    }
+    
     page.drawText(duration, {
         x: width - 30 - timesRomanFont.widthOfTextAtSize(duration, 12),
         y: height - 112,
         size: 12,
         font: timesRomanFont
     })
-    page.drawText(data.education.degreeType + " in " + data.education.major, {
+    page.drawText(data.degreetype + " in " + data.major, {
         x: 30,
         y: height - 127,
         size: 12,
         font: timesRomanItalic
     })
     const maxWidth = width - 30 - 30
-    let description = data.education.description.split("\n")
+    let description = data.educationinfo.split("\n")
     let pos = 142
     description.forEach((line: string) => {
         page.drawText("- " + line, {
@@ -112,7 +123,16 @@ export async function Template1(data: any) {
         })
         let startDate = experience.startDate.split("-")
         let endDate = experience.endDate.split("-")
-        let duration = months[parseInt(startDate[1]) - 1] + " " + startDate[0] + " - " + months[parseInt(endDate[1]) - 1] + " " + endDate[0]
+        let duration = ""
+        if(startDate.length > 1 && endDate.length > 1) {
+            duration = months[parseInt(startDate[1]) - 1] + " " + startDate[0] + " - " + months[parseInt(endDate[1]) - 1] + " " + endDate[0]
+        }
+        else if(startDate.length > 1) {
+            duration = months[parseInt(startDate[1]) - 1] + " " + startDate[0]
+        }
+        else if(endDate.length > 1) {
+            duration = months[parseInt(endDate[1]) - 1] + " " + endDate[0]
+        }
         page.drawText(duration, {
             x: width - 30 - timesRomanFont.widthOfTextAtSize(duration, 12),
             y: height - pos,
@@ -220,6 +240,11 @@ export async function Template1(data: any) {
     });
 
     const pdfBytes = await pdfDoc.save()
-    const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
-    saveAs(pdfBlob, data.personalInfo.name + " Resume.pdf")
+    const uintArray = new Uint8Array(pdfBytes);
+    const byteArray = Array.from(uintArray);
+    const pdfDataUri = `data:application/pdf;base64,${btoa(
+        String.fromCharCode(...byteArray)
+    )}`;
+
+    return pdfDataUri
 }

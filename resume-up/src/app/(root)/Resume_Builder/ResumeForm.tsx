@@ -87,6 +87,8 @@ export default function ContactForm() {
         setProjects(updatedProjects)
     }
 
+    const [createStatus, setCreateStatus] = useState(false)
+
     //Create a resume
     const [resumeDisplay, setResumeDisplay] = useState("")
     async function handleSubmit(event: any) {
@@ -106,18 +108,25 @@ export default function ContactForm() {
             skills: event.target.skills.value
         }
 
-        const pdfUri = await Template1(data)
-        setResumeDisplay(pdfUri)
-
-        const response = await fetch("/api/resumebuilder", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({email: loggedInUser, resume: pdfUri})
-        })
-        const responseData = await response.json()
-        setCreationStatus({made: true, message: responseData.message})
+        if(createStatus) {
+            const pdfUri = await Template1(data, true)
+            setResumeDisplay(pdfUri)
+    
+            const response = await fetch("/api/resumebuilder", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({email: loggedInUser, resume: pdfUri})
+            })
+            const responseData = await response.json()
+            setCreationStatus({made: true, message: responseData.message})
+        }
+        else {
+            const pdfUri = await Template1(data, false)
+            setResumeDisplay(pdfUri)
+            setCreationStatus({made: true, message: "Succesfully generated resume."})
+        }
     }
 
     const [resumeBuilder, setResumeBuilder] = useState({
@@ -146,9 +155,15 @@ export default function ContactForm() {
         }));
     }
 
+    const [hidePersonalInfo, setHidePersonalInfo] = useState(true)
+    const [hideEducation, setHideEducation] = useState(true)
+    const [hideWorkExperience, setHideWorkExperience] = useState(true)
+    const [hideProjects, setHideProjects] = useState(true)
+    const [hideSkills, setHideSkills] = useState(true)
+
     useEffect(() => {
         if(resumeBuilder) {
-            Template1(resumeBuilder)
+            Template1(resumeBuilder, false)
             .then((pdfUri) => setResumeDisplay(pdfUri))
         }
     }, [resumeBuilder])
@@ -157,104 +172,116 @@ export default function ContactForm() {
         <div className="grid grid-cols-2 gap-4">
             <form className="flex flex-col p-4 ms-5" onSubmit={handleSubmit} onChange={formChange}>
                 {/* Personal Information */}
-                <p className="form-header">Personal Information</p>
-                <label className="mb-1">Name</label>
-                <input 
-                    type="text" 
-                    id="name" 
-                    autoComplete="off" 
-                    placeholder="First Last" 
-                    className="form-boxes mb-2"/>
-                <label className="mb-1">Email</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    autoComplete="off" 
-                    placeholder="bobsmith@email.com" 
-                    className="form-boxes mb-2"/>
-                <label className="mb-1">Phone Number</label>
-                <input 
-                    type="text" 
-                    id="phone" 
-                    autoComplete="off" 
-                    placeholder="111-111-1111"
-                    className="form-boxes"/>
-
-                {/* Education */}
-                <p className="text-lg font-semibold mt-8">Education</p>
-                <label className="mb-1">School</label>
+                <p className="form-header" onClick={() => setHidePersonalInfo(!hidePersonalInfo)}>Personal Information</p>
+                <div hidden={hidePersonalInfo} className={hidePersonalInfo ? "" : "mb-6"}><div className="flex flex-col">
+                    <label className="mb-1">Name</label>
                     <input 
                         type="text" 
-                        id="school" 
+                        id="name" 
                         autoComplete="off" 
-                        placeholder="Iowa State University" 
+                        placeholder="First Last" 
                         className="form-boxes mb-2"/>
-                <div className="grid grid-cols-2 gap-10 mb-3">
-                    <div className="flex flex-col">
-                        <label>Start: </label>
-                        <input type="month" id="started" className="form-boxes"/>
-                    </div>
-                    <div className="flex flex-col">
-                        <label>End: </label>
-                        <input type="month" id="ended" className="form-boxes"/>
-                    </div>
-                </div>
-                <div className="grid grid-cols-2 gap-10 mb-1">
-                    <div className="flex flex-col row-span-1">
-                        <label className="mb-1">Degree Type</label>
-                        <div className="flex flex-col form-boxes mb-2">
-                            <select
-                                id="degreetype"
-                                autoComplete="off" 
-                                className="bg-gray-200 focus:outline-none">
-                                <option value="Bachelors">Bachelors</option>
-                                <option value="Masters">Masters</option>
-                                <option value="PHD">PHD</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="mb-1">Major</label>
+                    <label className="mb-1">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        autoComplete="off" 
+                        placeholder="bobsmith@email.com" 
+                        className="form-boxes mb-2"/>
+                    <label className="mb-1">Phone Number</label>
+                    <input 
+                        type="text" 
+                        id="phone" 
+                        autoComplete="off" 
+                        placeholder="111-111-1111"
+                        className="form-boxes"/>
+                </div></div>
+                
+                {/* Education */}
+                <p className="text-lg font-semibold mt-2" onClick={() => setHideEducation(!hideEducation)}>Education</p>
+                <div hidden={hideEducation} className={hideEducation ? "" : "mb-6"}>
+                    <div className="flex flex-col"><label className="mb-1">School</label>
                         <input 
                             type="text" 
-                            id="major"
+                            id="school" 
                             autoComplete="off" 
-                            placeholder="Software Engineering" 
+                            placeholder="Iowa State University" 
                             className="form-boxes mb-2"/>
+                    <div className="grid grid-cols-2 gap-10 mb-3">
+                        <div className="flex flex-col">
+                            <label>Start: </label>
+                            <input type="month" id="started" className="form-boxes"/>
+                        </div>
+                        <div className="flex flex-col">
+                            <label>End: </label>
+                            <input type="month" id="ended" className="form-boxes"/>
+                        </div>
                     </div>
-                </div>
-                <textarea
-                    rows={5} 
-                    id="educationinfo"
-                    placeholder="Courses taken include..." 
-                    maxLength={500} 
-                    className="form-boxes"/>
+                    <div className="grid grid-cols-2 gap-10 mb-1">
+                        <div className="flex flex-col row-span-1">
+                            <label className="mb-1">Degree Type</label>
+                            <div className="flex flex-col form-boxes mb-2">
+                                <select
+                                    id="degreetype"
+                                    autoComplete="off" 
+                                    className="bg-gray-200 focus:outline-none">
+                                    <option value="Bachelors">Bachelors</option>
+                                    <option value="Masters">Masters</option>
+                                    <option value="PHD">PHD</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="mb-1">Major</label>
+                            <input 
+                                type="text" 
+                                id="major"
+                                autoComplete="off" 
+                                placeholder="Software Engineering" 
+                                className="form-boxes mb-2"/>
+                        </div>
+                    </div>
+                    <textarea
+                        rows={5} 
+                        id="educationinfo"
+                        placeholder="Courses taken include..." 
+                        maxLength={500} 
+                        className="form-boxes"/>
+                </div></div>
                 {/* Work Experience */}
-                <div className="grid grid-cols-2 mt-8">
-                    <p className="text-lg font-semibold">Work Experience</p>
-                    <div className="grid justify-items-end">
+                <div className="grid grid-cols-2 mt-2">
+                    <p className="text-lg font-semibold" onClick={() => setHideWorkExperience(!hideWorkExperience)}>Work Experience</p>
+                    <div hidden={hideWorkExperience}><div className="grid justify-items-end">
                         <Button type="button" onClick={addExperience} className="add-button col-end hover:bg-green-600">+</Button>
-                    </div>
+                    </div></div>
                 </div>
-                <WorkExperienceList experiences={workExperiences} update={updateExperience} deleteExperience={deleteExperience}/>
+                <div hidden={hideWorkExperience}>
+                    <WorkExperienceList experiences={workExperiences} update={updateExperience} deleteExperience={deleteExperience}/>
+                </div>
                 {/* Projects */}
                 <div className="grid grid-cols-2 mt-2">
-                    <p className="text-lg font-semibold">Projects</p>
-                    <div className="grid justify-items-end">
+                    <p className="text-lg font-semibold" onClick={() => setHideProjects(!hideProjects)}>Projects</p>
+                    <div hidden={hideProjects}><div className="grid justify-items-end">
                         <Button type="button" onClick={addProject} className="add-button col-end hover:bg-green-600">+</Button>
-                    </div>
+                    </div></div>
                 </div>
-                <ProjectList projects={projects} update={updateProject} deleteProject={deleteProject}/>
+                <div hidden={hideProjects}>
+                    <ProjectList projects={projects} update={updateProject} deleteProject={deleteProject}/>
+                </div>
                 {/* Skills */}
-                <p className="text-lg font-semibold mt-2">Skills</p>
-                <textarea 
-                    rows={5} 
-                    id="skills" 
-                    placeholder="Java, Python..." 
-                    maxLength={500}
-                    className="form-boxes"/>
+                <p className="text-lg font-semibold mt-2" onClick={() => setHideSkills(!hideSkills)}>Skills</p>
+                <div hidden={hideSkills}><div className="flex flex-col">
+                    <textarea 
+                        rows={5} 
+                        id="skills" 
+                        placeholder="Java, Python..." 
+                        maxLength={500}
+                        className="form-boxes"/>
+                </div></div>
                 <div className="flex flex-col justify-center mt-4 mb-8">
-                    <div className="flex justify-center"><Button className="submit-button hover:bg-[#5c51f5]">Create Resume</Button></div>
+                    <div className="flex justify-center">
+                        <Button className="submit-button hover:bg-[#5c51f5] mx-2" onClick={() => setCreateStatus(true)}>Save Resume</Button>
+                    </div>
                     {creationStatus.made ?
                          <div>
                             <p className="text-green-600 text-center font-semibold mt-2">{creationStatus.message}</p>

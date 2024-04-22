@@ -109,21 +109,18 @@ export default function ContactForm() {
         }
 
         if(createStatus) {
-            const pdfUri = await Template1(data, true)
-            setResumeDisplay(pdfUri)
-    
             const response = await fetch("/api/resumebuilder", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({email: loggedInUser, resume: pdfUri})
+                body: JSON.stringify({email: loggedInUser, resume: resumeDisplay})
             })
             const responseData = await response.json()
             setCreationStatus({made: true, message: responseData.message})
         }
         else {
-            const pdfUri = await Template1(data, false)
+            const pdfUri = await Template1(data, true)
             setResumeDisplay(pdfUri)
             setCreationStatus({made: true, message: "Succesfully generated resume."})
         }
@@ -280,6 +277,7 @@ export default function ContactForm() {
                 </div></div>
                 <div className="flex flex-col justify-center mt-4 mb-8">
                     <div className="flex justify-center">
+                        <Button className="submit-button hover:bg-[#5c51f5] mx-2" onClick={() => setCreateStatus(false)}>Generate Resume</Button>
                         <Button className="submit-button hover:bg-[#5c51f5] mx-2" onClick={() => setCreateStatus(true)}>Save Resume</Button>
                     </div>
                     {creationStatus.made ?

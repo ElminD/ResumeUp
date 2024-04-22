@@ -1,5 +1,8 @@
-import { saveAs } from "file-saver"
 import { PDFDocument, StandardFonts } from 'pdf-lib'
+import OpenAI from "openai";
+import openai from '@/lib/openai';
+// import { config } from "dotenv"
+// config()
 
 type WorkExperience = {
     id: number,
@@ -16,7 +19,19 @@ type Project = {
     description: string
 }
 
-export async function Template1(data: any) {
+async function aiData(description: string) {
+    const response = await fetch("/api/ai", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({description: description})
+    })
+    const responseData = await response.json()
+    return responseData.message
+}
+
+export async function Template1(data: any, ai: boolean) {
     const pdfDoc = await PDFDocument.create()
     const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
     const timesRomanBold = await pdfDoc.embedFont(StandardFonts.TimesRomanBold)
@@ -114,15 +129,16 @@ export async function Template1(data: any) {
         end: {x: width - 30, y: height - pos}
     })
     pos += 17
-    data.workExperiences.forEach((experience: WorkExperience) => {
-        page.drawText(experience.position, {
+
+    for(let i = 0; i < data.workExperiences.length; i++) {
+        page.drawText(data.workExperiences[i].position, {
             x: 30,
             y: height - pos,
             size: 12,
             font: timesRomanBold
         })
-        let startDate = experience.startDate.split("-")
-        let endDate = experience.endDate.split("-")
+        let startDate = data.workExperiences[i].startDate.split("-")
+        let endDate = data.workExperiences[i].endDate.split("-")
         let duration = ""
         if(startDate.length > 1 && endDate.length > 1) {
             duration = months[parseInt(startDate[1]) - 1] + " " + startDate[0] + " - " + months[parseInt(endDate[1]) - 1] + " " + endDate[0]
@@ -140,16 +156,22 @@ export async function Template1(data: any) {
             font: timesRomanFont
         })
         pos += 15
-        page.drawText(experience.company, {
+        page.drawText(data.workExperiences[i].company, {
             x: 30,
             y: height - pos,
             size: 12,
             font: timesRomanItalic
         })
         pos += 15
-        description = experience.description.split("\n")
+        if(ai) {
+            const aiDescription = await aiData(data.workExperiences[i].description)
+            description = aiDescription.split("\n")
+        }
+        else {
+            description = data.workExperiences[i].description.split("\n")
+        }
         description.forEach((line: string) => {
-            page.drawText("- " + line, {
+            page.drawText(line, {
                 x: 30,
                 y: height - pos,
                 size: 12,
@@ -165,7 +187,7 @@ export async function Template1(data: any) {
             }
         });
         pos += 8
-    })
+    }
     pos += 7
 
     page.drawText("PROJECTS", {
@@ -180,17 +202,23 @@ export async function Template1(data: any) {
         end: {x: width - 30, y: height - pos}
     })
     pos += 17
-    data.projects.forEach((project: Project) => {
-        page.drawText(project.name, {
+    for(let i = 0; i < data.projects.length; i++) {
+        page.drawText(data.projects[i].name, {
             x: 30,
             y: height - pos,
             size: 12,
             font: timesRomanBold
         })
         pos += 15
-        description = project.description.split("\n")
+        if(ai) {
+            const aiDescription = await aiData(data.projects[i].description)
+            description = aiDescription.split("\n")
+        }
+        else {
+            description = data.projects[i].description.split("\n")
+        }
         description.forEach((line: string) => {
-            page.drawText("- " + line, {
+            page.drawText(line, {
                 x: 30,
                 y: height - pos,
                 size: 12,
@@ -206,7 +234,7 @@ export async function Template1(data: any) {
             }
         });
         pos += 8
-    })
+    }
     pos += 7
 
     page.drawText("SKILLS", {

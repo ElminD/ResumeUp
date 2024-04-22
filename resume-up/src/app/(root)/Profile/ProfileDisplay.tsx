@@ -198,7 +198,6 @@ export default function ProfileDisplay() {
                         <div className="flex flex-col">
                             <div className="flex justify-center">
                             {resumes.map((resume, index) => {
-                                console.log(resume)
                                 return (
                                     <Button key={index} className="font-semibold bg-green-600 hover:bg-green-700 w-40 h-12 text-lg mt-4 mx-2" onClick={() => showResume(index)}>Resume {index + 1}</Button>
                                 )

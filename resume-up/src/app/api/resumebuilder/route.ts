@@ -10,7 +10,7 @@ export async function POST(req: Request) {
         user.resume.push(resume)
         await user.save()
         return new Response(JSON.stringify({
-            message: "Succesfully created resume.",
+            message: "Succesfully saved resume.",
             status: 200
         }))
     }
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         }
         await Resume.create(newResume)
         return new Response(JSON.stringify({
-            message: "Succesfully created resume.",
+            message: "Succesfully saved resume.",
             status: 200
         }))
     }

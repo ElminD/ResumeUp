@@ -7,11 +7,6 @@ import Cookies from "js-cookie"
 const HomeStart = () => {
   const loggedinUser = Cookies.get("loggedinEmail")
 
-  const cleanUpCookies = () => {
-    Cookies.remove("loggedinEmail")
-  }
-  window.addEventListener("beforeunload", cleanUpCookies)
-
   return (
     <div className="flex items-center px-4 py-10">
         <img src="/homepage.png" alt="homeImg" className="w-[38%] ml-20" />

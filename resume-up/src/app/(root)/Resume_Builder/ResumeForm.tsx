@@ -169,7 +169,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-2 gap-4">
             <form className="flex flex-col p-4 ms-5" onSubmit={handleSubmit} onChange={formChange}>
                 {/* Personal Information */}
-                <p className="form-header" onClick={() => setHidePersonalInfo(!hidePersonalInfo)}>Personal Information</p>
+                <p className="form-header underline" onClick={() => setHidePersonalInfo(!hidePersonalInfo)}>Personal Information</p>
                 <div hidden={hidePersonalInfo} className={hidePersonalInfo ? "" : "mb-6"}><div className="flex flex-col">
                     <label className="mb-1">Name</label>
                     <input 
@@ -195,7 +195,7 @@ export default function ContactForm() {
                 </div></div>
                 
                 {/* Education */}
-                <p className="text-lg font-semibold mt-2" onClick={() => setHideEducation(!hideEducation)}>Education</p>
+                <p className="text-lg font-semibold mt-2 underline" onClick={() => setHideEducation(!hideEducation)}>Education</p>
                 <div hidden={hideEducation} className={hideEducation ? "" : "mb-6"}>
                     <div className="flex flex-col"><label className="mb-1">School</label>
                         <input 
@@ -247,7 +247,7 @@ export default function ContactForm() {
                 </div></div>
                 {/* Work Experience */}
                 <div className="grid grid-cols-2 mt-2">
-                    <p className="text-lg font-semibold" onClick={() => setHideWorkExperience(!hideWorkExperience)}>Work Experience</p>
+                    <p className="text-lg font-semibold underline" onClick={() => setHideWorkExperience(!hideWorkExperience)}>Work Experience</p>
                     <div hidden={hideWorkExperience}><div className="grid justify-items-end">
                         <Button type="button" onClick={addExperience} className="add-button col-end hover:bg-green-600">+</Button>
                     </div></div>
@@ -257,7 +257,7 @@ export default function ContactForm() {
                 </div>
                 {/* Projects */}
                 <div className="grid grid-cols-2 mt-2">
-                    <p className="text-lg font-semibold" onClick={() => setHideProjects(!hideProjects)}>Projects</p>
+                    <p className="text-lg font-semibold underline" onClick={() => setHideProjects(!hideProjects)}>Projects</p>
                     <div hidden={hideProjects}><div className="grid justify-items-end">
                         <Button type="button" onClick={addProject} className="add-button col-end hover:bg-green-600">+</Button>
                     </div></div>
@@ -266,7 +266,7 @@ export default function ContactForm() {
                     <ProjectList projects={projects} update={updateProject} deleteProject={deleteProject}/>
                 </div>
                 {/* Skills */}
-                <p className="text-lg font-semibold mt-2" onClick={() => setHideSkills(!hideSkills)}>Skills</p>
+                <p className="text-lg font-semibold mt-2 underline" onClick={() => setHideSkills(!hideSkills)}>Skills</p>
                 <div hidden={hideSkills}><div className="flex flex-col">
                     <textarea 
                         rows={5} 

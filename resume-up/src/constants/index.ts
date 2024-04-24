@@ -26,5 +26,9 @@ export const footerLinks = [
     label: "Privacy Policy",
     route: "/Privacy_Policy",
   },
+  {
+    label: "Pricing",
+    route: "/Pricing",
+  }
 
 ]

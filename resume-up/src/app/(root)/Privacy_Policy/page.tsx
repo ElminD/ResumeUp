@@ -4,13 +4,16 @@ const page = () => {
     <p className="text-lg mb-6 ml-3">Last Updated: 2/19/24</p>
     <p className="text-lg ml-3">This page informs you of our policies regarding the collection, use, and disclosure of personal data when you
         use our Service and the choices you have associated with that data.</p>
+        <br></br>
+
     <p className="text-lg ml-3">We use your data to provide and improve the Service. By using the Service, you agree to the collection and use
         of information in accordance with this policy.</p>
+        <br></br>
 
     <h2 className="text-2xl font-bold ml-3">Information Collection and Use</h2>
     <p className="text-lg ml-3">We collect several different types of information for various purposes to provide and improve our Service to
         you.</p>
-
+        <br></br>
     <h3 className="text-2xl font-bold ml-3">Types of Data Collected</h3>
 
     <h4 className="text-lg ml-3">Personal Data</h4>
@@ -24,10 +27,12 @@ const page = () => {
         <li className="text-lg ml-3">&nbsp; •Address, State, Province, ZIP/Postal code, City</li>
         <li className="text-lg ml-3">&nbsp; •Cookies and Usage Data</li>
     </ul>
+    <br></br>
 
     <h3 className="text-2xl font-bold ml-3">Data Security</h3>
     <p className="text-lg ml-3">We prioritize the security of your personal information and employ industry-standard measures to protect it from unauthorized access, disclosure, alteration, or destruction. However, please note that no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
     <p className="text-lg ml-3">In the event of a data breach that affects your personal data, we will notify you and relevant authorities as required by applicable laws and regulations.</p>
+    <br></br>
 
     <h3 className="text-2xl font-bold ml-3">Third-Party Links</h3>
     <p className="text-lg ml-3">Our Service may contain links to third-party websites or services that are not operated by us. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services. We advise you to review the privacy policies of every website you visit.</p>

@@ -6,6 +6,7 @@ const AboutUs = () => {
     <div className="flex justify-between max-w-6xl mx-auto px-4 py-10">
       <div className="ourStory flex-1 mr-20">
         <h1 className="text-4xl font-bold mb-6 text-resumeup">Our Story</h1>
+        
         <p className="text-lg mb-6">
           Welcome to ResumeUp, where our mission is to transform your job search journey through the power of artificial intelligence.
           Crafting compelling resumes and navigating a competitive job market can be challenging, and we understand the need for a solution that goes beyond the ordinary.

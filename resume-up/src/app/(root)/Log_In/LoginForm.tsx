@@ -54,7 +54,7 @@ export default function LoginForm() {
                 <Button className="submit-button hover:bg-[#5c51f5] w-40 h-12 text-lg">Log In</Button>
             </div>
             {loggedIn.failed ? <p className="text-red-400 text-center font-semibold mt-2">{loggedIn.display}</p> : null}
-            <Link href="/Sign_Up" className="flex justify-center mt-6 underline">Don't have an account? Make one here!</Link>
+            <Link href="/Sign_Up" className="flex justify-center mt-6 underline">Don&apos;t have an account? Make one here!</Link>
         </form>
     )
 }

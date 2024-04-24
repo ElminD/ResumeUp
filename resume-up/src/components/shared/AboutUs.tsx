@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const AboutUs = () => {
@@ -27,27 +28,27 @@ const AboutUs = () => {
       </div>
       <div className="teamPictures flex-1 flex flex-wrap gap-10">
         <div className="flex flex-col items-center">
-          <img src="/elmin.png" alt="Elmin" className="w-60 h-60 mb-2" />
+          <Image src="/elmin.png" alt="Elmin" width={1000} height={1000} className="w-60 h-60 mb-2" />
           <a className="font-bold">Elmin Didic</a>
         </div>
         <div className="flex flex-col items-center">
-          <img src="/nick.png" alt="Nick" className="w-60 h-60 mb-2" />
+          <Image src="/nick.png" alt="Nick" width={1000} height={1000} className="w-60 h-60 mb-2" />
           <a className="font-bold">Nick Thomas</a>
         </div>
         <div className="flex flex-col items-center">
-          <img src="/nedim.jpg" alt="Nedim" className="w-60 h-60 mb-2" />
+          <Image src="/nedim.jpg" alt="Nedim" width={1000} height={1000} className="w-60 h-60 mb-2" />
           <a className="font-bold">Nedim Hodzic</a>
         </div>
         <div className="flex flex-col items-center">
-          <img src="/mitch.jpg" alt="Mitch" className="w-60 h-60 mb-2" />
+          <Image src="/mitch.jpg" alt="Mitch" width={1000} height={1000} className="w-60 h-60 mb-2" />
           <a className="font-bold">Mitch Talyat</a>
         </div>
         <div className="flex flex-col items-center">
-          <img src="/nathan.jpg" alt="Nathan" className="w-60 h-60 mb-2" />
+          <Image src="/nathan.jpg" alt="Nathan" width={1000} height={1000} className="w-60 h-60 mb-2" />
           <a className="font-bold">Nathan Boldt</a>
         </div>
         <div className="flex flex-col items-center">
-          <img src="/sid.jpg" alt="Sid" className="w-60 h-60 mb-2" />
+          <Image src="/sid.jpg" alt="Sid" width={1000} height={1000} className="w-60 h-60 mb-2" />
           <a className="font-bold">Sid Prakash</a>
         </div>
       </div>

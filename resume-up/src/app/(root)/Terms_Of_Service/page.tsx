@@ -23,13 +23,13 @@ const page = () => {
 <p className="text-lg ml-3">These terms and conditions shall be governed by and construed in accordance with the laws of USA, without regard to its conflict of law provisions. Any dispute arising out of or relating to these terms and conditions shall be exclusively resolved by the competent courts of Des Moines.</p>
 
 <h2 className="text-2xl font-bold ml-3">Indemnification</h2>
-<p className="text-lg ml-3">You agree to indemnify and hold harmless our company and its affiliates, officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, or expenses (including attorneys' fees) arising out of or relating to your use of our service or violation of these terms and conditions.</p>
+<p className="text-lg ml-3">You agree to indemnify and hold harmless our company and its affiliates, officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, or expenses (including attorneys&apos; fees) arising out of or relating to your use of our service or violation of these terms and conditions.</p>
 
 <h2 className="text-2xl font-bold ml-3">Termination</h2>
 <p className="text-lg ml-3">We reserve the right to terminate or suspend your access to our service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the terms.</p>
 
 <h2 className="text-2xl font-bold ml-3">Changes to Terms</h2>
-<p className="text-lg ml-3">We reserve the right, at our sole discretion, to modify or replace these terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect.</p>
+<p className="text-lg ml-3">We reserve the right, at our sole discretion, to modify or replace these terms at any time. If a revision is material, we will provide at least 30 days&apos; notice prior to any new terms taking effect.</p>
 
 
 

@@ -128,7 +128,7 @@ export default function ProfileDisplay() {
             .then((data) => setResumes(data.data))
             .catch((error) => console.error('Error fetching data:', error));
         }
-    }, []);
+    });
 
     return (
         <div>

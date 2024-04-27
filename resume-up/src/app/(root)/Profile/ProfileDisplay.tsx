@@ -7,7 +7,6 @@ import Link from "next/link";
 
 export default function ProfileDisplay() {
     const loggedinUser = Cookies.get("loggedinEmail")
-    // const loggedinUser = "nhodzic@iastate.edu"
     const [updateCheck, setUpdateCheck] = useState({status: false, message: ""})
     const [userData, setUserData] = useState({
         email: "",
@@ -128,7 +127,7 @@ export default function ProfileDisplay() {
             .then((data) => setResumes(data.data))
             .catch((error) => console.error('Error fetching data:', error));
         }
-    });
+    }, []);
 
     return (
         <div>
